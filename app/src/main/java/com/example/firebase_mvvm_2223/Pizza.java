@@ -12,6 +12,11 @@ public class Pizza {
         mUid = uid;
     }
 
+    public String toString() {
+
+        return mNom + " - " + mIngredients + " - " + mPreu;
+    }
+
     public void setNom(String nom) { mNom = nom; }
     public void setIngredients(String ingredients) { mIngredients = ingredients; }
     public void setPreu(String preu) { mPreu = preu; }
