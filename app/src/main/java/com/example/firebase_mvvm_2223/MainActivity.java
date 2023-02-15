@@ -116,6 +116,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ActualitzarPizza() { // Update.
+
+        String nom = mEtNom.getText().toString();
+        String ingredients = mEtIngredients.getText().toString();
+        String preu = mEtPreu.getText().toString();
+        Pizza pizza = new Pizza(nom, ingredients, preu, mPizzaSeleccionada.getUid());
+
+        mReference.child("Pizzes").child(mPizzaSeleccionada.getUid()).setValue(pizza);
+
+        ResetCamps();
     }
 
     private void AfegirPizza() { // Create.
@@ -123,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         String nom = mEtNom.getText().toString();
         String ingredients = mEtIngredients.getText().toString();
         String preu = mEtPreu.getText().toString();
-        String uid = UUID.randomUUID().toString();
+        String uid = mReference.push().getKey(); //UUID.randomUUID().toString();
 
         Pizza pizza = new Pizza(nom, ingredients, preu, uid);
 
